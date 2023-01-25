@@ -10,7 +10,7 @@ abstract class Shapes{
     static double breadth;
     static double side1;
     static double side2;
-    static double ans;
+    double ans;
     protected static final Logger LOGGER =  Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     abstract void perimeter();
     abstract void area();
