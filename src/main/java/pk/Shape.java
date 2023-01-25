@@ -1,6 +1,6 @@
 package pk;
 import java.util.*;
-
+import java.util.logging.*;
 
 abstract class Shapes{
     static double radius;
@@ -10,19 +10,23 @@ abstract class Shapes{
     static double breadth;
     static double side1;
     static double side2;
-
+    static double ans;
+    protected static final Logger LOGGER =  Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     abstract void perimeter();
     abstract void area();
+
 }
 
 class Triangle extends Shapes{
-
+    
     void perimeter(){
-        System.out.println("Perimeter of triangle: "+(Shapes.side1+Shapes.side2+Shapes.base));
+        ans = (Shapes.side1+Shapes.side2+Shapes.base);
+        LOGGER.log(Level.INFO,Double.toString(ans),"Perimeter of triangle: "+ans);
     }
 
     void area(){
-        System.out.println("Area of triangle: "+0.5*(Shapes.base*Shapes.height));
+        ans = 0.5*(Shapes.base*Shapes.height);
+        LOGGER.log(Level.INFO,Double.toString(ans),"Area of triangle: "+ans);
     }
 
     Triangle(double side1, double side2, double base, double height){
@@ -34,13 +38,14 @@ class Triangle extends Shapes{
 }
 
 class Circle extends Shapes{
-
     void perimeter(){
-        System.out.println("Perimeter of circle: "+2*3.14*Shapes.radius);
+        ans = 2*3.14*Shapes.radius;
+        LOGGER.log(Level.INFO,Double.toString(ans),"Perimeter of circle: "+ans);
     }
 
     void area(){
-        System.out.println("Area of circle: "+3.14*(Shapes.radius*Shapes.radius));
+        ans = 3.14*(Shapes.radius*Shapes.radius);
+        LOGGER.log(Level.INFO,Double.toString(ans),"Area of circle: "+ans);
     }
 
     Circle(double radius){
@@ -49,11 +54,13 @@ class Circle extends Shapes{
 }
 class Rectangle extends Shapes{
     void perimeter(){
-        System.out.println("Perimeter of rectangle: "+2*(Shapes.length+Shapes.breadth));
+        ans = 2*(Shapes.length+Shapes.breadth);
+        LOGGER.log(Level.INFO,Double.toString(ans),"Perimeter of rectangle: "+ans);
     }
 
     void area(){
-        System.out.println("Area of rectangle: "+(Shapes.length*Shapes.breadth));
+        ans = (Shapes.length*Shapes.breadth);
+        LOGGER.log(Level.INFO,Double.toString(ans),"Area of rectangle: "+ans);
     }
     Rectangle(double length, double breadth){
         Shapes.length = length;
@@ -62,47 +69,48 @@ class Rectangle extends Shapes{
 }
 
 public class Shape {
+    private static final Logger LOGGER =  Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args){
         int n = 1;
         do{
-            System.out.println("1.Triangle 2.Rectangle 3.Circle\n");
+            LOGGER.log(Level.INFO,"\n1.Triangle 2.Rectangle 3.Circle\n");
             int choice = sc.nextInt();
             if(choice == 1){
-                System.out.println("enter side 1: ");
+                LOGGER.log(Level.INFO,"\nenter side 1: ");
                 double side1 = sc.nextDouble();
-                System.out.println("enter side 2: ");
+                LOGGER.log(Level.INFO,"\nenter side 2: ");
                 double side2 = sc.nextDouble();
-                System.out.println("enter base: ");
+                LOGGER.log(Level.INFO,"\nenter base: ");
                 double base = sc.nextDouble();
-                System.out.println("enter height: ");
+                LOGGER.log(Level.INFO,"\nenter height: ");
                 double height = sc.nextDouble();
 
-                Shapes s = new Triangle(side1,side2,base,height);//side1, side2, base, height
+                Shapes s = new Triangle(side1,side2,base,height);
                 s.perimeter();
                 s.area();
             }
             else if(choice == 2){
-                System.out.println("enter length: ");
+                LOGGER.log(Level.INFO,"enter length: ");
                 double length = sc.nextDouble();
-                System.out.println("enter breadth: ");
+                LOGGER.log(Level.INFO,"enter breadth: ");
                 double breadth = sc.nextDouble();
 
-                Shapes s = new Rectangle(length, breadth);//length, breadth
+                Shapes s = new Rectangle(length, breadth);
                 s.perimeter();
                 s.area();
             }
             else if(choice == 3){
-                System.out.println("enter radius: ");
+                LOGGER.log(Level.INFO,"enter radius: ");
                 double radius = sc.nextDouble();
 
-                Shapes s = new Circle(radius);//radius);
+                Shapes s = new Circle(radius);
                 s.perimeter();
                 s.area();
             }
             else{
-                System.out.print("exiting..");
-                System.exit(1);
+                LOGGER.log(Level.INFO,"exiting..");
+                n=0;
             }
         }while(n == 1);
     }
