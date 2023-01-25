@@ -13,20 +13,6 @@ abstract class Shapes{
 
     abstract void perimeter();
     abstract void area();
-
-    // Shapes(double radius){
-    //     this.radius  = radius;
-    // }
-    // Shapes(double side1, double side2, double base, double height){
-    //     this.side1  = side1;
-    //     this.side2  = side2;
-    //     this.base  = base;
-    //     this.height = height;
-    // }
-    // Shapes(double length, double breadth){
-    //     this.length  = length;
-    //     this.breadth  = breadth;
-    // }
 }
 
 class Triangle extends Shapes{
