@@ -74,7 +74,6 @@ public class Shape {
     public static void main(String[] args){
         int n = 1;
         do{
-            try{
                 LOGGER.log(Level.INFO,"\n1.Triangle 2.Rectangle 3.Circle\n");
                 int choice = sc.nextInt();
                 if(choice == 1){
@@ -113,12 +112,6 @@ public class Shape {
                     LOGGER.log(Level.INFO,"exiting..");
                     n=0;
                 }
-            }catch(Exception e){
-                String s = ""+e;
-                LOGGER.info(s);
-                sc.nextLine();
-                LOGGER.info("_______________________________________________");
-            }
         }while(n == 1);
     }
     
